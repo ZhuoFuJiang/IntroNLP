@@ -148,3 +148,17 @@ def convert_one_hot(x, vocab_size):
     if x_origin_dim == 1:
         x_one_hot = x_one_hot.squeeze(axis=1)
     return x_one_hot
+
+
+def to_cpu(x):
+    import numpy
+    if type(x) == numpy.ndarray:
+        return x
+    return np.asnumpy(x)
+
+
+def to_gpu(x):
+    import cupy
+    if type(x) == cupy.ndarray:
+        return x
+    return cupy.asarray(x)
